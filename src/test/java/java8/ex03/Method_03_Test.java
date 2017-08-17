@@ -16,7 +16,7 @@ public class Method_03_Test {
     interface IDao {
         List<Person> findAll();
 
-        static DaoA getDefaultInstance(){
+        static IDao getDefaultInstance(){
         	Method_03_Test  methode = new Method_03_Test();
         	return methode.new DaoA();
         }
