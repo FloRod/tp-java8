@@ -5,6 +5,7 @@ import java8.data.Data;
 import java8.data.Person;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,14 +19,32 @@ public class Lambda_02_Test {
         Account map(Person p);
     }
     // end::PersonToAccountMapper[]
-
+    
+    interface PersonToFirstName {
+        String firstname(Person p);
+    }
+    
     // tag::map[]
     private List<Account> map(List<Person> personList, PersonToAccountMapper mapper) {
-        // TODO implémenter la méthode pour transformer une liste de personnes en liste de comptes
-        return null;
+    	
+    	 // TODO implémenter la méthode pour transformer une liste de personnes en liste de comptes
+    	List <Account> tabReverse = new ArrayList<Account>();
+    	for (Person i : personList){
+    		tabReverse.add(mapper.map(i));
+    	}
+        return tabReverse;
     }
     // end::map[]
 
+    private List<String> firstname(List<Person> personList, PersonToFirstName name) {
+    	
+   	 // TODO implémenter la méthode pour transformer une liste de personnes en liste de prénoms
+   	List <String> tabReverse = new ArrayList<String>();
+   	for (Person i : personList){
+   		tabReverse.add(name.firstname(i));
+   	}
+       return tabReverse;
+   }
 
     // tag::test_map_person_to_account[]
     @Test
@@ -35,7 +54,10 @@ public class Lambda_02_Test {
 
         // TODO transformer la liste de personnes en liste de comptes
         // TODO tous les objets comptes ont un solde à 100 par défaut
-        List<Account> result = map(personList, null);
+        
+        PersonToAccountMapper persAccountReverse = personne -> new Account(personne, 100);
+        
+		List<Account> result = map(personList, persAccountReverse);
 
         assert result.size() == personList.size();
         for (Account account : result) {
@@ -51,8 +73,10 @@ public class Lambda_02_Test {
 
         List<Person> personList = Data.buildPersonList(100);
 
+        PersonToFirstName persNameReverse =  personne -> personne.getFirstname();
+        
         // TODO transformer la liste de personnes en liste de prénoms
-        List<String> result = null;
+        List<String> result = firstname(personList, persNameReverse);
 
         assert result.size() == personList.size();
         for (String firstname : result) {
