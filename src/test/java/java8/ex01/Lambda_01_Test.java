@@ -20,7 +20,10 @@ public class Lambda_01_Test {
 
     // tag::filter[]
     private List<Person> filter(List<Person> persons, PersonPredicate predicate) {
-        // TODO implementer la méthode
+        // TODO implementer la méthode de manière impérative
+    	// TODO construire une liste nouvelleListe sur la base de la liste "persons"
+    	// Cette liste nouvelleListe ne contient que les personnes qui passe le test suivant :
+    	//predicate.test(person) == true
         return null;
     }
     // end::filter[]
@@ -33,7 +36,7 @@ public class Lambda_01_Test {
         List<Person> personList = Data.buildPersonList(100);
 
         // TODO result ne doit contenir que des personnes adultes (age >= 18)
-        List<Person> result = filter(personList, null);
+        List<Person> result = filter(personList, null); //ici la lambda expression
 
         assert result.size() == 83;
 
