@@ -3,13 +3,13 @@ package java8.ex02;
 import java8.data.Data;
 import java8.data.domain.Customer;
 import java8.data.domain.Order;
-import java8.data.domain.Pizza;
+//import java8.data.domain.Pizza;
 import org.junit.Test;
 
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
+//import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.Matchers.*;

@@ -5,11 +5,11 @@ import java8.data.domain.Order;
 import java8.data.domain.Pizza;
 import org.junit.Test;
 
-import java.util.Comparator;
+//import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+//import java.util.stream.Stream;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -122,7 +122,7 @@ public class Stream_01_Test {
 
     @Test
     public void test_stream_min() throws Exception {
-        List<Order> orders = new Data().getOrders();
+       // List<Order> orders = new Data().getOrders();
 
         List<Pizza> pizzas = new Data().getPizzas();
 
