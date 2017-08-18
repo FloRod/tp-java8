@@ -14,7 +14,7 @@ import java.util.List;
 public class Lambda_02_Test {
 
 	// tag::PersonToAccountMapper[]
-	interface PersonToAccountMapper<T> { // T = type générique, ici devrait être Account ou String
+	interface PersonToAccountMapper<T> { // T = type générique, ici devrait être Account ou String (transformation personne -> compte et prénom
 		T map(Person p);
 	}
 	// end::PersonToAccountMapper[]
