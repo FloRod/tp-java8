@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.Matchers.*;
@@ -24,9 +26,13 @@ public class Stream_02_Test {
         List<Order> orders = new Data().getOrders();
 
         // Trouver la liste des clients ayant déjà passés une commande
-        List<Customer> result = null;
+        List<Customer> result =  orders.stream().map(order -> order.getCustomer()).distinct().collect(Collectors.toList());
 
+		// fonctionnement : utilisation set empêche les doublons, et implique que la liste des customers ne sont que ceux qui ont au moins passé commande une fois
+        Set<String> result2 = orders.stream().map(order -> order.getCustomer().getFirstname()).collect(Collectors.toSet());
+        
         assertThat(result, hasSize(2));
+        assertThat(result2, hasSize(2));
     }
 
     @Test
@@ -36,7 +42,8 @@ public class Stream_02_Test {
 
         // TODO calculer les statistiques sur les prix des pizzas vendues
         // TODO utiliser l'opération summaryStatistics
-        IntSummaryStatistics result = null;
+        IntSummaryStatistics result = orders.stream().flatMap(order -> order.getPizzas().stream()).mapToInt(pizza -> pizza.getPrice()).summaryStatistics();
+        // IntSummaryStatistics result = orders.stream().flatMap(order -> order.getPizzas().stream().map(pizza -> pizza.getPrice())).collect(Collectors.summarizingInt());
 
 
         assertThat(result.getSum(), is(10900L));
